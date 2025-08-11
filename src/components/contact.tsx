@@ -40,7 +40,7 @@ export function Contact() {
           </Link>
 
           <Link
-            href="https://linkedin.com/in/ertugrul-dernekli"
+            href="https://www.linkedin.com/in/ertu%C4%9Frul-dernekli-5b7b97268/"
             target="_blank"
             className="flex flex-col items-center gap-3 p-6 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors group border border-gray-700"
           >
