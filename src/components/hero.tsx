@@ -21,24 +21,35 @@ export function Hero() {
     <>
       <section className="min-h-screen flex items-center justify-center bg-black px-4 relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-40"
           style={{
-            transform: `translateY(${scrollY * -0.8}px) translateX(${scrollY * -0.3}px)`,
+            transform: `translateY(${scrollY * -0.8}px) translateX(${scrollY * -0.3}px) rotate(${scrollY * 0.05}deg)`,
           }}
         >
-          <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl" />
-          <div className="absolute top-40 right-20 w-48 h-48 bg-emerald-500/20 rounded-full blur-2xl" />
-          <div className="absolute bottom-40 left-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-pink-500/15 rounded-full blur-xl" />
+          <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/30 rounded-full blur-3xl animate-pulse-slow" />
+          <div className="absolute top-40 right-20 w-48 h-48 bg-emerald-500/25 rounded-full blur-2xl animate-bounce-slow" />
+          <div className="absolute bottom-40 left-1/4 w-80 h-80 bg-purple-500/30 rounded-full blur-3xl animate-pulse-slower" />
+          <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-pink-500/20 rounded-full blur-xl animate-float" />
+          <div className="absolute top-10 right-10 w-40 h-40 bg-cyan-500/20 rounded-full blur-2xl animate-spin-slow" />
+          <div className="absolute bottom-20 right-1/4 w-56 h-56 bg-yellow-500/15 rounded-full blur-3xl animate-pulse-slow" />
+        </div>
+
+        <div
+          className="absolute inset-0 opacity-15"
+          style={{
+            transform: `translateY(${scrollY * -0.5}px) scale(${1 + scrollY * 0.001}) rotate(${scrollY * 0.02}deg)`,
+          }}
+        >
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-900/15 via-transparent to-emerald-900/15 animate-gradient-shift" />
         </div>
 
         <div
           className="absolute inset-0 opacity-10"
           style={{
-            transform: `translateY(${scrollY * -0.5}px) scale(${1 + scrollY * 0.001}) rotate(${scrollY * 0.02}deg)`,
+            transform: `translateY(${scrollY * -0.3}px) scale(${1 + scrollY * 0.002}) rotate(${scrollY * -0.03}deg)`,
           }}
         >
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-900/10 via-transparent to-emerald-900/10" />
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tl from-purple-900/10 via-transparent to-pink-900/10 animate-gradient-shift-reverse" />
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10">
@@ -191,23 +202,69 @@ export function Hero() {
             opacity: opacityAmount,
           }}
         >
-          {[...Array(6)].map((_, i) => (
+          {[...Array(12)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-2 h-2 bg-blue-400/20 rounded-full"
+              className={`absolute rounded-full ${
+                i % 4 === 0
+                  ? "w-3 h-3 bg-blue-400/30"
+                  : i % 4 === 1
+                    ? "w-2 h-2 bg-emerald-400/25"
+                    : i % 4 === 2
+                      ? "w-4 h-4 bg-purple-400/20"
+                      : "w-1 h-1 bg-pink-400/35"
+              } ${i % 3 === 0 ? "animate-float" : i % 3 === 1 ? "animate-bounce-slow" : "animate-pulse-slow"}`}
               style={{
-                left: `${20 + i * 15}%`,
-                top: `${30 + i * 10}%`,
-                transform: `translateY(${scrollY * (-0.2 - i * 0.1)}px) translateX(${scrollY * (-0.05 - i * 0.02)}px) scale(${1 + scrollY * 0.001})`,
-                animationDelay: `${i * 0.5}s`,
+                left: `${10 + ((i * 7) % 80)}%`,
+                top: `${20 + ((i * 11) % 60)}%`,
+                transform: `translateY(${scrollY * (-0.15 - i * 0.08)}px) translateX(${scrollY * (-0.03 - i * 0.015)}px) scale(${1 + scrollY * 0.0008}) rotate(${scrollY * (0.02 + i * 0.01)}deg)`,
+                animationDelay: `${i * 0.3}s`,
+              }}
+            />
+          ))}
+        </div>
+
+        <div
+          className="absolute inset-0 pointer-events-none opacity-10"
+          style={{
+            transform: `translateY(${scrollY * -0.2}px) rotate(${scrollY * 0.01}deg)`,
+          }}
+        >
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={`shape-${i}`}
+              className={`absolute border border-blue-400/20 ${
+                i % 2 === 0 ? "w-16 h-16 rounded-full animate-spin-slow" : "w-12 h-12 rotate-45 animate-pulse-slower"
+              }`}
+              style={{
+                left: `${15 + ((i * 12) % 70)}%`,
+                top: `${25 + ((i * 15) % 50)}%`,
+                transform: `translateY(${scrollY * (-0.1 - i * 0.05)}px) translateX(${scrollY * (0.05 + i * 0.02)}px) scale(${0.8 + scrollY * 0.0005})`,
+                animationDelay: `${i * 0.7}s`,
               }}
             />
           ))}
         </div>
       </section>
+
       <style jsx global>{`
         @keyframes smooth-blink { 0%,100%{opacity:1} 50%{opacity:.15} }
+        @keyframes pulse-slow { 0%,100%{opacity:.3;transform:scale(1)} 50%{opacity:.8;transform:scale(1.05)} }
+        @keyframes pulse-slower { 0%,100%{opacity:.2;transform:scale(1)} 50%{opacity:.6;transform:scale(1.1)} }
+        @keyframes bounce-slow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        @keyframes float { 0%,100%{transform:translateY(0) rotate(0deg)} 33%{transform:translateY(-8px) rotate(2deg)} 66%{transform:translateY(4px) rotate(-1deg)} }
+        @keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+        @keyframes gradient-shift { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+        @keyframes gradient-shift-reverse { 0%,100%{background-position:100% 50%} 50%{background-position:0% 50%} }
+        
         .animate-blink { animation: smooth-blink 3s ease-in-out infinite; }
+        .animate-pulse-slow { animation: pulse-slow 4s ease-in-out infinite; }
+        .animate-pulse-slower { animation: pulse-slower 6s ease-in-out infinite; }
+        .animate-bounce-slow { animation: bounce-slow 3s ease-in-out infinite; }
+        .animate-float { animation: float 5s ease-in-out infinite; }
+        .animate-spin-slow { animation: spin-slow 20s linear infinite; }
+        .animate-gradient-shift { animation: gradient-shift 8s ease-in-out infinite; background-size: 200% 200%; }
+        .animate-gradient-shift-reverse { animation: gradient-shift-reverse 10s ease-in-out infinite; background-size: 200% 200%; }
       `}</style>
     </>
   )

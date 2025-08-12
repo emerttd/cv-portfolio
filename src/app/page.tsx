@@ -8,6 +8,7 @@ import { Skills } from "@/components/skills"
 import { Contact } from "@/components/contact"
 import { Education } from "@/components/education"
 import Loading from "@/components/loading"
+import { ScrollToTop } from "@/components/scroll-to-top"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -48,6 +49,7 @@ export default function Home() {
         <Education />
         <Contact />
       </main>
+      <ScrollToTop />
     </>
   )
 }
