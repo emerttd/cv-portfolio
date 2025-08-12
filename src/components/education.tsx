@@ -11,7 +11,7 @@ export function Education() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
             <div>
               <h3 className="text-2xl font-bold text-white mb-2">İskenderun Teknik Üniversitesi</h3>
-              <p className="text-lg text-blue-400 font-semibold">Üniversite Mezunu</p>
+              <p className="text-lg text-blue-400 font-semibold">Bilgisayar Programcılığı</p>
             </div>
 
             <div className="flex flex-col gap-2 mt-4 md:mt-0 text-gray-300">
