@@ -14,13 +14,16 @@ export function Hero() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const blurAmount = Math.min(scrollY * 0.02, 8)
+  const opacityAmount = Math.max(1 - scrollY * 0.002, 0.3)
+
   return (
     <>
       <section className="min-h-screen flex items-center justify-center bg-black px-4 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-30"
           style={{
-            transform: `translateY(${scrollY * 0.8}px)`,
+            transform: `translateY(${scrollY * -0.8}px) translateX(${scrollY * -0.3}px)`,
           }}
         >
           <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl" />
@@ -32,7 +35,7 @@ export function Hero() {
         <div
           className="absolute inset-0 opacity-10"
           style={{
-            transform: `translateY(${scrollY * 0.3}px) scale(${1 + scrollY * 0.0005})`,
+            transform: `translateY(${scrollY * -0.5}px) scale(${1 + scrollY * 0.001}) rotate(${scrollY * 0.02}deg)`,
           }}
         >
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-900/10 via-transparent to-emerald-900/10" />
@@ -44,22 +47,23 @@ export function Hero() {
             <div
               className="order-2 lg:order-1 lg:col-span-1 lg:pt-2"
               style={{
-                transform: `translateY(${scrollY * 0.4}px) translateX(${scrollY * 0.1}px)`,
+                transform: `translateY(${scrollY * -0.6}px) translateX(${scrollY * -0.4}px) rotate(${scrollY * -0.03}deg)`,
+                filter: `blur(${blurAmount}px)`,
+                opacity: opacityAmount,
               }}
             >
               <div className="group relative w-[260px] aspect-[4/5] sm:w-[300px] lg:w-full lg:max-w-[360px] lg:aspect-[4/5] sm:mx-auto lg:mx-0">
                 <div
                   className="absolute -inset-4 rounded-2xl bg-gradient-to-b from-blue-500/60 to-emerald-500/50 blur-3xl group-hover:blur-[50px] animate-blink transition-all duration-500"
                   style={{
-                    transform: `translateY(${scrollY * -0.3}px) rotate(${scrollY * 0.05}deg)`,
+                    transform: `translateY(${scrollY * 0.5}px) translateX(${scrollY * -0.3}px) rotate(${scrollY * -0.08}deg) scale(${1 + scrollY * 0.002})`,
                   }}
                 />
 
-                {/* Fotoğraf kartı */}
                 <div
                   className="relative h-full w-full overflow-hidden rounded-2xl ring-1 ring-white/10 shadow-[0_25px_80px_-20px_rgba(0,0,0,0.7)] bg-zinc-900/40"
                   style={{
-                    transform: `translateY(${scrollY * -0.1}px)`,
+                    transform: `translateY(${scrollY * 0.2}px) translateX(${scrollY * 0.1}px)`,
                   }}
                 >
                   <Image
@@ -79,13 +83,15 @@ export function Hero() {
             <div
               className="order-1 lg:order-2 lg:col-span-2 text-center lg:text-left"
               style={{
-                transform: `translateY(${scrollY * 0.2}px)`,
+                transform: `translateY(${scrollY * 0.4}px) translateX(${scrollY * 0.3}px)`,
+                filter: `blur(${blurAmount * 0.8}px)`,
+                opacity: opacityAmount,
               }}
             >
               <p
                 className="text-base md:text-lg text-blue-300 mb-2 tracking-wide uppercase animate-blink"
                 style={{
-                  transform: `translateY(${scrollY * 0.15}px)`,
+                  transform: `translateY(${scrollY * -0.3}px) translateX(${scrollY * 0.2}px)`,
                 }}
               >
                 Merhaba, ben
@@ -93,14 +99,14 @@ export function Hero() {
               <h1
                 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
                 style={{
-                  transform: `translateY(${scrollY * 0.1}px) translateX(${scrollY * -0.05}px)`,
+                  transform: `translateY(${scrollY * 0.2}px) translateX(${scrollY * 0.4}px) rotate(${scrollY * 0.01}deg)`,
                 }}
               >
                 Ertuğrul Mert
                 <span
                   className="block text-blue-400"
                   style={{
-                    transform: `translateX(${scrollY * 0.08}px)`,
+                    transform: `translateX(${scrollY * 0.6}px) translateY(${scrollY * 0.1}px)`,
                   }}
                 >
                   Dernekli
@@ -109,7 +115,7 @@ export function Hero() {
               <p
                 className="text-xl md:text-2xl text-blue-200 mb-6"
                 style={{
-                  transform: `translateY(${scrollY * 0.05}px)`,
+                  transform: `translateY(${scrollY * 0.3}px) translateX(${scrollY * 0.25}px)`,
                 }}
               >
                 Full Stack Developer & Software Engineer
@@ -117,7 +123,7 @@ export function Hero() {
               <p
                 className="text-lg text-gray-300 mb-8 leading-relaxed max-w-xl lg:max-w-2xl"
                 style={{
-                  transform: `translateY(${scrollY * 0.03}px)`,
+                  transform: `translateY(${scrollY * 0.15}px) translateX(${scrollY * 0.1}px)`,
                 }}
               >
                 Web ve mobil projelerde uçtan uca çözümler üreten, kullanıcı deneyimi ve işlevselliği ön planda tutan
@@ -129,7 +135,7 @@ export function Hero() {
               <div
                 className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8"
                 style={{
-                  transform: `translateY(${scrollY * -0.1}px) scale(${1 - scrollY * 0.0002})`,
+                  transform: `translateY(${scrollY * 0.5}px) translateX(${scrollY * 0.2}px) scale(${1 - scrollY * 0.0008})`,
                 }}
               >
                 <Link
@@ -160,7 +166,7 @@ export function Hero() {
               <div
                 className="text-sm text-gray-400 space-y-1"
                 style={{
-                  transform: `translateY(${scrollY * -0.05}px)`,
+                  transform: `translateY(${scrollY * 0.4}px) translateX(${scrollY * 0.15}px)`,
                 }}
               >
                 <p className="flex items-center justify-center lg:justify-start gap-2">
@@ -173,7 +179,13 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            filter: `blur(${blurAmount * 0.5}px)`,
+            opacity: opacityAmount,
+          }}
+        >
           {[...Array(6)].map((_, i) => (
             <div
               key={i}
@@ -181,7 +193,7 @@ export function Hero() {
               style={{
                 left: `${20 + i * 15}%`,
                 top: `${30 + i * 10}%`,
-                transform: `translateY(${scrollY * (0.1 + i * 0.05)}px) translateX(${scrollY * (0.02 + i * 0.01)}px)`,
+                transform: `translateY(${scrollY * (-0.2 - i * 0.1)}px) translateX(${scrollY * (-0.05 - i * 0.02)}px) scale(${1 + scrollY * 0.001})`,
                 animationDelay: `${i * 0.5}s`,
               }}
             />
