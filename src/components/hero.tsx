@@ -45,14 +45,14 @@ export function Hero() {
           <div className="grid lg:grid-cols-3 gap-10 lg:gap-14 items-start">
             {/* Profile Image */}
             <div
-              className="order-2 lg:order-1 lg:col-span-1 lg:pt-2"
+              className="order-2 lg:order-1 lg:col-span-1 lg:pt-2 flex justify-center lg:justify-start"
               style={{
                 transform: `translateY(${scrollY * -0.6}px) translateX(${scrollY * -0.4}px) rotate(${scrollY * -0.03}deg)`,
                 filter: `blur(${blurAmount}px)`,
                 opacity: opacityAmount,
               }}
             >
-              <div className="group relative w-[260px] aspect-[4/5] sm:w-[300px] lg:w-full lg:max-w-[360px] lg:aspect-[4/5] sm:mx-auto lg:mx-0">
+              <div className="group relative w-[260px] aspect-[4/5] sm:w-[300px] lg:w-full lg:max-w-[360px] lg:aspect-[4/5]">
                 <div
                   className="absolute -inset-4 rounded-2xl bg-gradient-to-b from-blue-500/60 to-emerald-500/50 blur-3xl group-hover:blur-[50px] animate-blink transition-all duration-500"
                   style={{
@@ -126,51 +126,56 @@ export function Hero() {
                   transform: `translateY(${scrollY * 0.15}px) translateX(${scrollY * 0.1}px)`,
                 }}
               >
-                Web ve mobil projelerde uçtan uca çözümler üreten, kullanıcı deneyimi ve işlevselliği ön planda tutan
-                bir geliştiriciyim. Yeni şeyler öğrenmeyi, farklı problemleri çözmeyi ve fikirleri gerçeğe dönüştürmeyi
-                seviyorum. Takım içinde uyumlu çalışır, gerektiğinde inisiyatif alırım. Detaylara önem vererek, ortaya
-                çıkan ürünün hem teknik hem de estetik açıdan tatmin edici olmasını hedeflerim.
+                <span className="block md:hidden">
+                  Web ve mobil projelerde uçtan uca çözümler üreten bir geliştiriciyim. Yeni teknolojiler öğrenmeyi ve
+                  farklı problemleri çözmeyi seviyorum.
+                </span>
+                <span className="hidden md:block">
+                  Web ve mobil projelerde uçtan uca çözümler üreten, kullanıcı deneyimi ve işlevselliği ön planda tutan
+                  bir geliştiriciyim. Yeni şeyler öğrenmeyi, farklı problemleri çözmeyi ve fikirleri gerçeğe
+                  dönüştürmeyi seviyorum. Takım içinde uyumlu çalışır, gerektiğinde inisiyatif alırım. Detaylara önem
+                  vererek, ortaya çıkan ürünün hem teknik hem de estetik açıdan tatmin edici olmasını hedeflerim.
+                </span>
               </p>
-
               <div
-                className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8"
+                className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 mb-6 sm:mb-8"
                 style={{
                   transform: `translateY(${scrollY * 0.5}px) translateX(${scrollY * 0.2}px) scale(${1 - scrollY * 0.0008})`,
                 }}
               >
                 <Link
                   href="mailto:emerttd@gmail.com"
-                  className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base"
                 >
-                  <Mail size={20} />
+                  <Mail size={18} className="sm:w-5 sm:h-5" />
                   İletişim
                 </Link>
                 <Link
                   href="https://github.com/emerttd"
                   target="_blank"
-                  className="flex items-center gap-2 px-6 py-3 border border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-black transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 border border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-black transition-colors text-sm sm:text-base"
                 >
-                  <Github size={20} />
+                  <Github size={18} className="sm:w-5 sm:h-5" />
                   GitHub
                 </Link>
                 <Link
                   href="https://www.linkedin.com/in/ertu%C4%9Frul-dernekli-5b7b97268/"
                   target="_blank"
-                  className="flex items-center gap-2 px-6 py-3 border border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-black transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 border border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-black transition-colors text-sm sm:text-base"
                 >
-                  <Linkedin size={20} />
+                  <Linkedin size={18} className="sm:w-5 sm:h-5" />
                   LinkedIn
                 </Link>
               </div>
 
               <div
-                className="text-sm text-gray-400 space-y-1"
+                className="text-xs sm:text-sm text-gray-400 space-y-1"
                 style={{
                   transform: `translateY(${scrollY * 0.4}px) translateX(${scrollY * 0.15}px)`,
                 }}
               >
                 <p className="flex items-center justify-center lg:justify-start gap-2">
-                  <Phone size={16} />
+                  <Phone size={14} className="sm:w-4 sm:h-4" />
                   (+90) 539 336 38 81
                 </p>
                 <p>Kayseri, Türkiye • 20/07/2001</p>
