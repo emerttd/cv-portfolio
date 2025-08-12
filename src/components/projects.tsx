@@ -46,15 +46,39 @@ const projects = [
 
 export function Projects() {
   return (
-    <section className="py-20 px-4 bg-black">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-20 px-4 bg-black relative overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className="absolute top-32 left-20 w-32 h-32 border border-blue-500/10 rounded-full animate-spin"
+          style={{ animationDuration: "20s" }}
+        ></div>
+        <div
+          className="absolute bottom-40 right-16 w-24 h-24 border border-purple-500/10 rounded-lg rotate-45 animate-pulse"
+          style={{ animationDuration: "6s" }}
+        ></div>
+        <div
+          className="absolute top-1/2 left-10 w-16 h-16 border border-green-500/10 rounded-full animate-bounce"
+          style={{ animationDuration: "4s" }}
+        ></div>
+        <div
+          className="absolute top-20 right-1/3 w-20 h-20 border border-yellow-500/10 rounded-lg animate-spin"
+          style={{ animationDuration: "15s", animationDirection: "reverse" }}
+        ></div>
+      </div>
+
+      <div
+        className="absolute inset-0 bg-gradient-to-tr from-blue-900/3 via-purple-900/3 to-green-900/3 animate-pulse"
+        style={{ animationDuration: "10s" }}
+      ></div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
         <h2 className="text-4xl font-bold text-white mb-16 text-center">Projeler</h2>
 
         <div className="grid gap-8 md:gap-12">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-gray-900 rounded-xl p-8 shadow-xl border border-gray-800 hover:border-blue-600/50 transition-all duration-300"
+              className="bg-gray-900 rounded-xl p-8 shadow-xl border border-gray-800 hover:border-blue-600/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-600/10 hover:scale-[1.02]"
             >
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
                 <div className="flex-1">
@@ -66,7 +90,7 @@ export function Projects() {
                   <Link
                     href={project.github}
                     target="_blank"
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 hover:scale-105 text-sm"
                   >
                     <Github size={16} />
                     GitHub
@@ -79,7 +103,10 @@ export function Projects() {
                 <ul className="space-y-2">
                   {project.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3 text-gray-300">
-                      <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <div
+                        className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0 animate-pulse"
+                        style={{ animationDelay: `${featureIndex * 0.3}s` }}
+                      ></div>
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -92,7 +119,7 @@ export function Projects() {
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm font-medium border border-blue-800"
+                      className="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm font-medium border border-blue-800 hover:border-blue-600 hover:bg-blue-900/70 transition-all duration-300"
                     >
                       {tech}
                     </span>
