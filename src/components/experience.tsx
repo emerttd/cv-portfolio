@@ -76,14 +76,12 @@ export function Experience() {
                     className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0 animate-pulse"
                     style={{ animationDelay: "1s" }}
                   ></div>
-                  {/* <span>Sipariş, kullanıcı ve şube CRUD API larını geliştirme</span> */}
                 </li>
                 <li className="flex items-start gap-3">
                   <div
                     className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0 animate-pulse"
                     style={{ animationDelay: "1.5s" }}
                   ></div>
-                  {/* <span>Dashboarda istatistik özet ve toplu veri temizleme özellikleri</span> */}
                 </li>
                 <li className="flex items-start gap-3">
                   <div
